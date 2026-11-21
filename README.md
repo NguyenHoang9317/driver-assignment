@@ -25,7 +25,7 @@ pytest
 | Đặng Nguyễn Bình | | Viết báo cáo |
 |  | | Viết báo cáo |
 | Nguyễn Trung Huy Hoàng| 080206008898 | Dữ liệu, hạ tầng|
-| Nguyễn Khuyễn | | Thuật toán |
+| Nguyễn Khuyến | | Thuật toán |
 | Nguyễn Huy Đức | | Đánh giá, giao diện |
 
 ## Kết quả

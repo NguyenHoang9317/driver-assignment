@@ -2,6 +2,15 @@
 __pycache__/
 *.py[codz]
 *$py.class
+*.pyc
+.venv/
+venv/
+.env
+.idea/
+.vscode/
+.pytest_cache/
+.DS_Store
+*.log
 
 # C extensions
 *.so

@@ -6,12 +6,9 @@ from src.data_generator import generate_data, mssv_to_seed
 from src.cost import cost_matrix
 from src.evaluation import evaluate_all
 
-try:
-    from src.algorithms.hungarian import solve as hungarian
-    from src.algorithms.greedy import solve as greedy
-    from src.algorithms.random_assign import solve as random_assign
-except ImportError:
-    from src._stub_local import hungarian, greedy, random_assign
+from src.algorithms.hungarian import solve as hungarian
+from src.algorithms.greedy import solve as greedy
+from src.algorithms.random_assign import solve as random_assign
 
 SOLVERS = {"Hungarian": hungarian, "Greedy": greedy, "Random": random_assign}
 

@@ -6,15 +6,20 @@ from src.data_generator import generate_data, mssv_to_seed
 from src.cost import cost_matrix
 from src.evaluation import evaluate_all
 
-try:
-    from src.algorithms.hungarian import solve as hungarian
-    from src.algorithms.greedy import solve as greedy
-    from src.algorithms.random_assign import solve as random_assign
-except ImportError:
-    from src._stub_local import hungarian, greedy, random_assign
+from src.algorithms import get_assignments
 
-SOLVERS = {"Hungarian": hungarian, "Greedy": greedy, "Random": random_assign}
 
+def _make(name):
+    def solver(cost, seed=None):
+        return get_assignments(name, cost, seed)
+    return solver
+
+
+SOLVERS = {
+    "Hungarian": _make("Hungarian (Tự cài O(n³))"),
+    "Greedy": _make("Greedy Heuristic"),
+    "Random": _make("Ngẫu nhiên (Random)"),
+}
 st.set_page_config(page_title="Bài toán gán tài xế - đơn hàng", layout="wide")
 st.title("Ghép tài xế với đơn hàng")
 

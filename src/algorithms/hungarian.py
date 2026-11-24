@@ -84,3 +84,13 @@ def hungarian_custom(cost_matrix: np.ndarray) -> tuple[list[tuple[int, int]], fl
     orig_cost = np.asarray(cost_matrix, dtype=float)
     total_cost = float(sum(orig_cost[r, c] for r, c in assignments))
     return assignments, total_cost
+
+def hungarian(
+    cost_matrix: np.ndarray, use_custom: bool = False
+) -> list[tuple[int, int]]:
+    """Trả về trực tiếp list cặp (driver_idx, order_idx) cho giao diện."""
+    if use_custom:
+        assignments, _ = hungarian_custom(cost_matrix)
+    else:
+        assignments, _ = hungarian_scipy(cost_matrix)
+    return assignments

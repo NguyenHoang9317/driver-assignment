@@ -8,7 +8,11 @@ Output: danh sách (i, j); mỗi tài xế và mỗi đơn xuất hiện đúng 
 """
 
 def check_assignment(cost, assignment):
-    n = cost.shape[0]
-    assert len(assignment) == n, "Thiếu hoặc thừa cặp"
-    assert sorted(i for i, _ in assignment) == list(range(n)), "Tài xế trùng/thiếu"
-    assert sorted(j for _, j in assignment) == list(range(n)), "Đơn trùng/thiếu"
+    n, m = cost.shape      
+    k = min(n, m)          
+    drivers = [i for i, _ in assignment]
+    orders = [j for _, j in assignment]
+
+    assert len(assignment) == k, f"Cần {k} cặp, nhận {len(assignment)}"
+    assert len(set(drivers)) == k and all(0 <= i < n for i in drivers), "Tài xế trùng hoặc ngoài khoảng 0..n-1"
+    assert len(set(orders)) == k and all(0 <= j < m for j in orders), "Đơn trùng hoặc ngoài khoảng 0..m-1"

@@ -23,7 +23,7 @@ def evaluate_all(cost, solvers: dict, baseline="Random", seed=0):
     """solvers = {"Hungarian": f1, "Greedy": f2, "Random": f3}"""
     results = {}
     for name, fn in solvers.items():
-        kw = {"seed": seed} if name == "Random" else {}
+        kw = {"seed": seed} if name == baseline else {}
         asg, t = run_and_measure(fn, cost, **kw)
         results[name] = {"assignment": asg, "cost": total_cost(cost, asg),
                          "avg": avg_cost(cost, asg), "time": t}

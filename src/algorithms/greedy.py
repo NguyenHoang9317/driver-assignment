@@ -29,3 +29,8 @@ def greedy_assign(cost_matrix: np.ndarray) -> tuple[list[tuple[int, int]], float
 
     assignments.sort(key=lambda x: x[0])
     return assignments, total_cost
+
+def greedy(cost_matrix: np.ndarray) -> list[tuple[int, int]]:
+    """Trả về trực tiếp list cặp (driver_idx, order_idx) cho giao diện."""
+    assignments, _ = greedy_assign(cost_matrix)
+    return assignments

@@ -2,6 +2,8 @@ from .greedy import greedy, greedy_assign
 from .hungarian import hungarian, hungarian_custom, hungarian_scipy
 from .random_assign import manual_assign, manual_pairs, random_assign, random_pairs
 
+BASELINE = "Ngẫu nhiên (Random)"
+
 ALGORITHMS = {
     "Hungarian (SciPy)": hungarian_scipy,
     "Hungarian (Tự cài O(n³))": hungarian_custom,

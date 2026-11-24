@@ -1,6 +1,6 @@
 # Hệ thống phân bổ đơn hàng cho tài xế tối ưu
 
-Đồ án môn Trí tuệ nhân tạo, nhóm gồm: ......
+Đồ án môn Trí tuệ nhân tạo, nhóm 3
 
 ## Giới thiệu
 Bài toán gán (assignment problem): ghép tài xế với đơn hàng sao cho
@@ -12,21 +12,13 @@ pip install -r requirements.txt
 ## Chạy
 streamlit run app.py
 
-## Chạy test
-pytest
-
-## Cấu trúc thư mục
-(dán sơ đồ cây thư mục)
-
 ## Phân công
 | Thành viên |Mã sinh viên |Phụ trách |
 |---|---|---|
-| Dỗ Huỳnh Bình Khôi | | Viết báo cáo |
-| Đặng Nguyễn Bình | | Viết báo cáo |
-|  | | Viết báo cáo |
+| Đặng Nguyễn Bình | 082206004220 | Viết báo cáo |
+| Đỗ Huỳnh Bình Khôi | 056205000234 | Viết báo cáo |
+| Châu Gia Hưng | 058206001974 | Viết báo cáo |
 | Nguyễn Trung Huy Hoàng| 080206008898 | Dữ liệu, hạ tầng|
-| Nguyễn Khuyến | | Thuật toán |
-| Nguyễn Huy Đức | | Đánh giá, giao diện |
+| Nguyễn Khuyến | 051205000012 | Thuật toán |
+| Nguyễn Huy Đức | 074206005025 | Đánh giá, giao diện |
 
-## Kết quả
-(ảnh demo + bảng so sánh)

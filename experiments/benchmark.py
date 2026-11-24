@@ -11,20 +11,11 @@ from src.evaluation import evaluate_all
 from src.algorithms import get_assignments
 
 
-def _make(name):
-    def solver(cost, seed=None):
-        return get_assignments(name, cost, seed)
-    return solver
-
-
-SOLVERS = {
-    "Hungarian": _make("Hungarian (Tự cài O(n³))"),
-    "Greedy": _make("Greedy Heuristic"),
-    "Random": _make("Ngẫu nhiên (Random)"),
-}
+from src.algorithms import PAIR_ALGORITHMS, BASELINE
 
 OUT_DIR = "experiments"
 
+UNITS = {"distance": "km", "time": "phút"}
 
 def run_benchmark(sizes=(10, 20, 50, 100, 200), seeds=range(1, 11),
                   metric="distance"):

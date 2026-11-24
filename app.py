@@ -5,21 +5,8 @@ import plotly.graph_objects as go
 from src.data_generator import generate_data, mssv_to_seed
 from src.cost import cost_matrix
 from src.evaluation import evaluate_all
+from src.algorithms import PAIR_ALGORITHMS, BASELINE
 
-from src.algorithms import get_assignments
-
-
-def _make(name):
-    def solver(cost, seed=None):
-        return get_assignments(name, cost, seed)
-    return solver
-
-
-SOLVERS = {
-    "Hungarian": _make("Hungarian (Tự cài O(n³))"),
-    "Greedy": _make("Greedy Heuristic"),
-    "Random": _make("Ngẫu nhiên (Random)"),
-}
 st.set_page_config(page_title="Bài toán gán tài xế - đơn hàng", layout="wide")
 st.title("Ghép tài xế với đơn hàng")
 
@@ -38,7 +25,8 @@ unit = "km" if metric == "distance" else "phút"
 if run:
     drivers, orders = generate_data(mssv, n_drivers, n_orders)
     cost = cost_matrix(drivers, orders, metric, manhattan)
-    res = evaluate_all(cost, SOLVERS, baseline="Random", seed=mssv_to_seed(mssv))
+    res = evaluate_all(cost, PAIR_ALGORITHMS, baseline=BASELINE,
+                       seed=mssv_to_seed(mssv))
     st.session_state["data"] = (res, drivers, orders, cost, unit)
 
 if "data" in st.session_state:
@@ -86,4 +74,4 @@ if "data" in st.session_state:
         (drivers["driver_id"].iloc[i], orders["order_id"].iloc[j], cost[i, j])
         for i, j in pairs
     ], columns=["Tài xế", "Đơn hàng", f"Chi phí ({unit})"])
-    st.dataframe(detail, use_container_width=True)
+    st.dataframe(detail, use_container_width=True, hide_index=True)

@@ -8,12 +8,20 @@ from src.data_generator import generate_data
 from src.cost import cost_matrix
 from src.evaluation import evaluate_all
 
-from src.algorithms.hungarian import solve as hungarian
-from src.algorithms.greedy import solve as greedy
-from src.algorithms.random_assign import solve as random_assign
+from src.algorithms import get_assignments
 
 
-SOLVERS = {"Hungarian": hungarian, "Greedy": greedy, "Random": random_assign}
+def _make(name):
+    def solver(cost, seed=None):
+        return get_assignments(name, cost, seed)
+    return solver
+
+
+SOLVERS = {
+    "Hungarian": _make("Hungarian (Tự cài O(n³))"),
+    "Greedy": _make("Greedy Heuristic"),
+    "Random": _make("Ngẫu nhiên (Random)"),
+}
 
 OUT_DIR = "experiments"
 
